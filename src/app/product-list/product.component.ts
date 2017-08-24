@@ -5,19 +5,15 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-product',
   template: `
-    <div class="product">
-      <div class="productThumbnail">
-      <img class="productThumbnailImage" [src]="product.thumbnailURL" />
-    </div>
-    <div class="productInfo">
-      <div><label class="productName">{{product.name}}</label></div>
-      <span class="productDescription">{{product.description}}</span>
-    </div>
-    <div class="placeAnOrder">
-      <button class="btnPlaceAnOrder" (click)="onClick()">Place an order ></button>
-    </div>
-    <hr>
-  </div>
+    <label class="cbDisplayGrid"><input #cbDisplayGrid 
+           type="checkbox" 
+           (change)="toggelCheckbox(cbDisplayGrid)">Display products in grid</label>
+    <app-product-in-list *ngIf="currentView === 'list'" 
+                         [product]="product" 
+                         (placeAnOrderClicked)="onClick()"></app-product-in-list>
+    <app-product-in-grid *ngIf="currentView === 'grid'" 
+                         [product]="product" 
+                         (placeAnOrderClicked)="onClick()"></app-product-in-grid>
   `,
   styles: []
 })
@@ -25,9 +21,17 @@ export class ProductComponent implements OnInit {
 
   @Input() product : Product;
 
+  public currentView : string;
   public router: Router;
+
   constructor(router: Router) {
-    this.router = router;  
+    this.router = router;
+    this.currentView = 'grid';  
+  }
+
+  toggelCheckbox(element: HTMLInputElement): void {
+    element.checked ? this.currentView = 'grid' : this.currentView = 'list';
+    
   }
 
   onClick(){
@@ -35,7 +39,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    //console.log('ngOnInit ProductComponent product: '+this.product.name);
   }
 
 }

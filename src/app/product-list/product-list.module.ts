@@ -16,7 +16,9 @@ import { ProductInGridComponent } from './product-in-grid.component';
   imports: [
     CommonModule
   ],
-  declarations: [ProductListComponent, HeaderComponent, MainComponent, GroupTitleComponent, ProductsContainerComponent, ProductComponent, GroupListComponent, ProductDetailsComponent, ProductInListComponent, ProductInGridComponent],
+  declarations: [
+    ProductListComponent, HeaderComponent, MainComponent, GroupTitleComponent, ProductsContainerComponent, 
+    ProductComponent, GroupListComponent, ProductDetailsComponent, ProductInListComponent, ProductInGridComponent],
   exports: [ ProductListComponent, HeaderComponent ],
   providers: [ ProductGroupService ]
 })

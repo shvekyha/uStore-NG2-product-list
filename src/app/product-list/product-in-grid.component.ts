@@ -4,8 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-product-in-grid',
   template: `
-    <div class="product">
-      GRID
+    <div class="product grid">
       <div class="productThumbnail">
         <img class="productThumbnailImage" [src]="product.thumbnailURL" />
       </div>

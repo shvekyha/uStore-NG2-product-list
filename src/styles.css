@@ -105,12 +105,23 @@ header{
 .groupTitle h1, .groupTitle h2, .groupTitle h3, .groupTitle h4{
     margin: 5px 0px;
 }
-.product{
+
+.cbDisplayGrid{
+    /* float:right; */
+}
+
+.list.product{
     height: 80px;
     margin: 15px 0px;
 }
 
-.productThumbnail{
+.grid.product{
+    background-color: #F4F4F4;
+    height: 300px;
+    width: 200px;
+}
+
+.list .productThumbnail{
     float: left;
     border: 1px solid #e6e6e6;
     border-radius: 5px;
@@ -118,6 +129,17 @@ header{
     width: 70px;
     margin-bottom: 10px;
 }
+.grid .productThumbnail{
+    border-radius: 15px;
+    height: 100px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .productThumbnailImage{
     height: 50px;
     width: 50px;
@@ -127,14 +149,27 @@ header{
 	margin-bottom: 10px;
 	display: block;
 }
-.productInfo{
+
+.list .productInfo{
     float: left;
     margin: 0px 10px;
     width: 540px;
 }
-.placeAnOrder{
+.list .placeAnOrder{
     float: right;
     margin-top: 15px;
+}
+
+.grid .placeAnOrder{
+    margin-top: 15px;
+}
+
+.grid button.btnPlaceAnOrder{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color:white;
 }
 .back{
     margin-top: 15px;
