@@ -5,9 +5,6 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-product',
   template: `
-    <label class="cbDisplayGrid"><input #cbDisplayGrid 
-           type="checkbox" 
-           (change)="toggelCheckbox(cbDisplayGrid)">Display products in grid</label>
     <app-product-in-list *ngIf="currentView === 'list'" 
                          [product]="product" 
                          (placeAnOrderClicked)="onClick()"></app-product-in-list>
@@ -20,18 +17,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductComponent implements OnInit {
 
   @Input() product : Product;
+  @Input() currentView : string;
 
-  public currentView : string;
   public router: Router;
 
   constructor(router: Router) {
     this.router = router;
-    this.currentView = 'grid';  
-  }
-
-  toggelCheckbox(element: HTMLInputElement): void {
-    element.checked ? this.currentView = 'grid' : this.currentView = 'list';
-    
   }
 
   onClick(){

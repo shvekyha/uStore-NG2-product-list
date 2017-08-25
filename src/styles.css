@@ -42,7 +42,8 @@ body {
 	position: relative;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
                 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-    height: 600px;
+    min-height: 600px;
+    display: grid;
 }
 
 header{
@@ -89,13 +90,12 @@ header{
 
 .groupListSection{
     float: left;
-    border-right: 1px solid #e6e6e6;
     width: 150px;
     min-height: 480px;
 }
 .productsSection{
     float: left;
-    border-left: 1px solid #e6e6e6;
+    border-left: 2px solid #e6e6e6;
     min-height: 480px;
 }
 .groupTitle{
@@ -107,7 +107,9 @@ header{
 }
 
 .cbDisplayGrid{
-    /* float:right; */
+    top: -55px;
+    right: -520px;
+    position: relative;
 }
 
 .list.product{
@@ -117,8 +119,11 @@ header{
 
 .grid.product{
     background-color: #F4F4F4;
-    height: 300px;
+    height: 230px;
     width: 200px;
+    padding: 10px;
+    float: left;
+    margin: 5px 5px;
 }
 
 .list .productThumbnail{
