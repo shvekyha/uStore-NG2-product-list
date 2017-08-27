@@ -1,11 +1,12 @@
+import { ActivatedRoute } from '@angular/router';
 import { ProductGroup } from './productGroup';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductGroupService } from "./product-group.service";
 
 @Component({
   selector: 'app-main',
   template: `
-      <app-group-list [productGroupList]="productGroupList.productGroupList" 
+      <app-group-list [productGroupList]="service.productGroupList" 
                       (groupClicked)="currentGroup = $event">
       </app-group-list>
       <section class="productsSection innerSection">
@@ -17,11 +18,14 @@ import { ProductGroupService } from "./product-group.service";
 })
 export class MainComponent implements OnInit {
 
-  public productGroupList : ProductGroupService;
+  public service : ProductGroupService;
+  public activatedRoute : ActivatedRoute;
   private _currentGroup : ProductGroup;
+  @Input() groupIdInRoute: number;
 
-  constructor(productGroupList : ProductGroupService) { 
-    this.productGroupList = productGroupList;
+  constructor(service : ProductGroupService, activatedRoute: ActivatedRoute) { 
+    this.service = service;
+    this.activatedRoute = activatedRoute;
   }
 
   set currentGroup(group : ProductGroup){
@@ -33,6 +37,9 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.groupIdInRoute){
+      this._currentGroup = this.service.getGroup(this.groupIdInRoute);
+    }
   }
 
 }

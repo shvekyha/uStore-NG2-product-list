@@ -1,3 +1,4 @@
+import { ProductService } from './product.service';
 import { ProductGroupService } from './product-group.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,6 @@ import { ProductInGridComponent } from './product-in-grid.component';
     ProductListComponent, HeaderComponent, MainComponent, GroupTitleComponent, ProductsContainerComponent, 
     ProductComponent, GroupListComponent, ProductDetailsComponent, ProductInListComponent, ProductInGridComponent],
   exports: [ ProductListComponent, HeaderComponent ],
-  providers: [ ProductGroupService ]
+  providers: [ ProductGroupService, ProductService ]
 })
 export class ProductListModule { }
