@@ -28,7 +28,7 @@ export class ProductGroup {
         
         let productGroupList : ProductGroup[] = [
           {id: 1, name: "Business cards", description:"Find here business cards products", productList: productList1},
-          {id: 2, name: "Other Products", description:"Find here other products", productList: productList2}
+          {id: 2, name: "Other products", description:"Find here other products", productList: productList2}
         ];
     
         return productGroupList;
