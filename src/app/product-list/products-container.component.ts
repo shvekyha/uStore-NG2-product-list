@@ -5,13 +5,13 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-products-container',
   template: `
   <section class="productsContainer">
-  <div  class="cbDisplayGrid">
-    <label>
-      <input #cbDisplayGrid 
+    <div class="cbDisplayGrid">
+      <label>
+        <input #cbDisplayGrid 
            type="checkbox" 
            (change)="toggelCheckbox(cbDisplayGrid)">Display products in grid
-    </label>
-  </div>
+      </label>
+    </div>
     <app-product *ngFor="let product of currentGroup.productList" [product]="product" [currentView]="currentView"></app-product>
   </section>
   `,
