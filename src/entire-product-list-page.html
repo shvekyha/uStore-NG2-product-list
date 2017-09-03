@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <section class="productList">
+        <section class="mainPageArea">
             <header class="header">
                 <section class="logo">
                     <image class="logoImage" src="./assets/XMPie.png" />
@@ -39,21 +39,26 @@
                 </section>
             </header>
             <section class="main">
-                <section class="groupListSection">
+                <section class="groupListSection innerSection">
                     <dd class="groupList"> 
                         <dl class="group">Group 1</dl>
                         <dl class="group">Group 2</dl>
                     </dd>
                 </section>
-                <section class="productsSection">
+                <section class="productsSection innerSection">
                     <section class="groupTitle">
                         <h2 class="groupName">Group 1</h2>
                         <h3 class="groupDescription">Group 1 Description</h3>
                     </section>
                     <section class="productsContainer">
-                        <div class="product">
+                        <div class="cbDisplayGrid">
+                            <label>
+                                <input type="checkbox">Display products in grid
+                            </label>
+                        </div>
+                        <div class="product list">
                             <div class="productThumbnail">
-                                <a href=""><img class="productThumbnailImage" src="" /></a>
+                                <img class="productThumbnailImage" src="" />
                             </div>
                             <div class="productInfo">
                                 <div><label class="productName">Product 1</label></div>
