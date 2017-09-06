@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
            (change)="toggelCheckbox(cbDisplayGrid)">Display products in grid
       </label>
     </div>
-    <app-product *ngFor="let product of currentGroup.productList" [product]="product" [currentView]="currentView"></app-product>
+    <app-product *ngFor="let product of currentGroup.productList; let i=index;" [product]="product" [currentView]="currentView" [index]="i+1"></app-product>
   </section>
   `,
   styles: []

@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
     <app-product-in-grid *ngIf="currentView === 'grid'" 
                          [product]="product" 
                          (placeAnOrderClicked)="onClick()"></app-product-in-grid>
+    <div *ngIf="currentView === 'grid' && index % 3 === 0"><br /></div>  
   `,
   styles: []
 })
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
 
   @Input() product : Product;
   @Input() currentView : string;
+  @Input() index : number;
 
   public router: Router;
 
@@ -30,7 +32,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    //console.log('ngOnInit ProductComponent product: '+this.product.name);
+    //console.log('ngOnInit ProductComponent product index: '+this.index);
   }
 
 }

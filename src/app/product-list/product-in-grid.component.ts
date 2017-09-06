@@ -16,7 +16,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         <button class="btnPlaceAnOrder" (click)="placeAnOrderClicked.emit()">Place an order ></button>
       </div>
     </div>
-    <div *ngIf="product.id % 3 === 0"><br /></div>
   `,
   styles: []
 })
