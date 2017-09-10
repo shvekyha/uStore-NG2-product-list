@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { ProductGroup } from './productGroup';
+import { ProductGroup } from './product-group';
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductGroupService } from "./product-group.service";
 

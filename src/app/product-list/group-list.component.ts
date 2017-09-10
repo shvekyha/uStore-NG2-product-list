@@ -1,4 +1,4 @@
-import { ProductGroup } from './productGroup';
+import { ProductGroup } from './product-group';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

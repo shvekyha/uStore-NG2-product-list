@@ -1,4 +1,4 @@
-import { ProductGroup } from './productGroup';
+import { ProductGroup } from './product-group';
 import { Product } from './product';
 import { Injectable } from '@angular/core';
 

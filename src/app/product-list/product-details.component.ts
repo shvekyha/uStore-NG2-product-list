@@ -1,5 +1,5 @@
 import { ProductService } from './product.service';
-import { ProductGroup } from './productGroup';
+import { ProductGroup } from './product-group';
 import { Product } from './product';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
