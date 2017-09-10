@@ -9,6 +9,7 @@ export class ProductService {
 
   public getProduct(productID : number): Product{
     let groupList : ProductGroup[] = ProductGroup.GetMock();
+    
     let productToReturn: Product; 
     groupList.every(function(group){
       let product : Product = group.productList.find(p => p.id === productID);
@@ -20,6 +21,15 @@ export class ProductService {
     });
 
     return productToReturn;
+
+    // //another way to implement:
+    // for (let i=0; i<groupList.length; i++){
+    //   let product = groupList[i].productList.find(p => p.id === parseInt(productID,10));
+    //   if (product !== undefined){
+    //       return product;
+    //   }
+    // };
+    // return null;
   }
 
   public getGroupByProductID(productID : number): ProductGroup{
@@ -35,5 +45,14 @@ export class ProductService {
     });
 
     return groupToReturn;
+
+    // //another way to implement:
+    // for (let i=0; i<groupList.length; i++){
+    //   let product = groupList[i].productList.find(p => p.id === parseInt(productID,10));
+    //   if (product !== undefined){
+    //       return groupList[i];
+    //   }
+    // };
+    // return null;
   }
 }
