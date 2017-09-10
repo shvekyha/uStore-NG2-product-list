@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      this.groupIdInRoute = +params['groupID'];  // (+) converts string 'productID' to a number
+      this.groupIdInRoute = +params['groupID'];  // (+) converts string 'groupID' to a number
     });
   }
 
