@@ -12,10 +12,11 @@ import { GroupListComponent } from './group-list.component';
 import { ProductDetailsComponent } from './product-details.component';
 import { ProductInListComponent } from './product-in-list.component';
 import { ProductInGridComponent } from './product-in-grid.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, HttpClientModule
   ],
   declarations: [
     ProductListComponent, HeaderComponent, MainComponent, GroupTitleComponent, ProductsContainerComponent, 

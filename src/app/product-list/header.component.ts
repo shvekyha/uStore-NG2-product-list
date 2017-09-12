@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <header class="header">
       <section class="logo">
-          <img class="logoImage" src="../../assets/XMPie.png" />
+          <img class="logoImage" src="./assets/XMPie.png" />
           <label class="userGreeting">Hello user.</label>
       </section>
       <section class="navigation">

@@ -6,7 +6,7 @@ import { ProductGroupService } from "./product-group.service";
 @Component({
   selector: 'app-main',
   template: `
-      <app-group-list [productGroupList]="service.productGroupList" 
+      <app-group-list [productGroupList]="service.productGroupList" [listStr]="service.listStr"
                       (groupClicked)="currentGroup = $event">
       </app-group-list>
       <section class="productsSection innerSection">
@@ -40,6 +40,7 @@ export class MainComponent implements OnInit {
     if (this.groupIdInRoute){
       this._currentGroup = this.service.getGroup(this.groupIdInRoute);
     }
+    console.log('service.listStr: '+this.service.listStr);
   }
 
 }
