@@ -8,8 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
       <dd class="groupList"> 
         <dl class="group" *ngFor="let group of productGroupList" (click)="groupClicked.emit(group)">{{group.name}}</dl>
       </dd>
-      {{listStr}}
     </section>
+    {{listStr}}
   `,
   styles: []
 })

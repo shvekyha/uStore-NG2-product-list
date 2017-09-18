@@ -35,4 +35,11 @@ export class ProductGroup {
       return productGroupList;
     }
 
+    static GetMockFromWebAPI() : Object[]{
+      let returnObj : Object[];
+
+      returnObj = [{"groupId":5,"groupName":"Group1","depth":0,"childGroups":null}];
+
+      return returnObj;
+    }
 }

@@ -4,6 +4,9 @@ import { Product } from './product';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 //import { Http, RequestOptions, URLSearchParams } from '@angular/http';
 
+import 'rxjs/add/operator/map';
+import { HttpHandler } from "@angular/common/http";
+
 @Injectable()
 export class ProductGroupService {
 
@@ -30,53 +33,97 @@ export class ProductGroupService {
     // this._productGroupList = ProductGroup.GetMock();
 
     // ---------------------------------------------------
-    //this is for getting the real product groups from uStore
-    //let list: string;
+    // // this is for getting the mock of the web api
+    // let productGroupMock : Object[] = ProductGroup.GetMockFromWebAPI();
+    // this._productGroupList = this.modifyProductGroupToList(productGroupMock);
 
-    //let url = '/uStore/ProductList.aspx/GetProductGroupsNoSession';
-    let url = 'https://hadassh/uStore/ProductList.aspx/GetProductGroupsNoSession';
-    let headers = new HttpHeaders({'ContentType' : 'application/json'});
-    this._http.post(url, {storeID: '5', userID: '3', cultureID: '1'}, {headers: headers})
-      //.subscribe(response => this._listStr = response);
-      .subscribe(
-        response => {
-          console.log('response: '+response);
-        },
-        err => {
+    // ---------------------------------------------------
+    // //this is for getting the real product groups from uStore controller
+    // //let list: string;
+
+    
+    // let headers = new HttpHeaders({'ContentType' : 'application/json'});
+    // let url = 'http://localhost/ustore/api/ProductList/GetProductGroups';
+    // let params = 'storeid=5&userid=3&cultureid=1'
+    // url = `${url}?${params}`;
+    // this._http.get(url,{headers: headers})
+    //   .subscribe(
+    //     response => {
+    //       console.log('response: '+response["d"]);
+    //       this._listStr = JSON.stringify(response["d"])
+    //     },
+    //     err => {
+    //           console.log('Something went wrong! Error: '+err.message);
+    //         }
+    //     );
+        
+    // //console.log('list: '+list);
+
+    // //this._productGroupList = this.modifyProductGroupList(list);
+
+// -------------------------------------------------------------
+// //this is for testing the other api cors
+
+let headers = new HttpHeaders({'ContentType' : 'application/json'});
+let url = 'http://hadassh/ustore/api/ProductList/Get';
+this._http.get(url,{headers: headers, withCredentials: true})
+//let headers = new HttpHeaders({"Authorization": "hadas@xmpie.com 123"});
+//let headers = new HttpHeaders({"X-Requested-With": "XMLHttpRequest"});
+//this._http.get(url, {headers : headers})
+  //.map((response : Response) => response.json())
+  .subscribe( 
+    response => {
+      console.log(response, typeof response);
+			console.log('JSON.stringify(response): ' + JSON.stringify(response));
+			this._listStr = JSON.stringify(response);
+    },
+    err => {
           console.log('Something went wrong! Error: '+err.message);
         }
-      );
+    );
 
-    //console.log('list: '+list);
+    // ---------------------------------------------------
+    // //this is for getting the real product groups from uStore web method
+  //   //let list: string;
 
-    //this._productGroupList = this.modifyProductGroupList(list);
-
-    // // ----------------------------------------------------
-    // //try to use asmx
-    // let params = new HttpParams();
-    // params = params.append('username', 'hadas@xmpie.com');
-    // params = params.append('password', '123');
-    // params = params.append('storeId', '5');
-    // params = params.append('cultureId', '1');
-
-    // this._http.get<string>('http://localhost/ustorewsapi/ProductGroupWS.asmx/GetProductGroupList', {params: params})
-    //   //.subscribe(response => this._listStr = response);
-    //   .subscribe(response => console.log('response: '+response));
-
-    // ---------------------------------------------------------
-    // //another try to pass param to asmx
-    // let body = JSON.stringify({ username: "hadas@xmpie.com", password: "123", storeId: "5", cultureId: "1" });
-    // let headers = new Headers({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: headers });
-    
-    // this.http.get('http://localhost/ustorewsapi/ProductGroupWS.asmx/op=GetProductGroupList', body, options)
-    //   .subscribe(response => console.log('response: '+response));
+  //   //let url = '/uStore/ProductList.aspx/GetProductGroupsNoSession';
+  //   let url = 'http://hadassh/uStore/ProductList.aspx/GetProductGroupsNoSession';
+  //   let headers = new HttpHeaders({'ContentType' : 'application/json'});
+  //   this._http.post(url, {storeID: '5', userID: '3', cultureID: '1'}, {headers: headers})
+  //     .subscribe(
+  //       response => {
+  //         this._listStr = JSON.stringify(response["d"])
+  //       },
+  //       err => {
+  //             console.log('Something went wrong! Error: '+err.message);
+  //           }
+  //       );
+  //     // .subscribe(
+  //     //   response => {
+  //     //     console.log('response: '+response);
+  //     //   },
+  //     //   err => {
+  //     //     console.log('Something went wrong! Error: '+err.message);
+  //     //   }
+  //     // );
 
   }
 
   public modifyProductGroupList(list:string) : ProductGroup[]{
     let listToReturn: ProductGroup[];
     //TODO: modify list from web method to fit the ProductGroup model 
+    return listToReturn;
+  }
+
+  public modifyProductGroupToList(list: Object[]) : ProductGroup[]{
+    console.log(list);
+    let listToReturn: ProductGroup[];
+    
+    list.forEach(element => {
+      let group : ProductGroup = {id: parseInt(element["groupId"],10), name: element["groupName"], description:"desc", productList: []};
+      listToReturn.push(group);
+    });
+    console.log(listToReturn);
     return listToReturn;
   }
 
