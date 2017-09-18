@@ -9,7 +9,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         <dl class="group" *ngFor="let group of productGroupList" (click)="groupClicked.emit(group)">{{group.name}}</dl>
       </dd>
     </section>
-    {{listStr}}
   `,
   styles: []
 })
@@ -17,12 +16,10 @@ export class GroupListComponent implements OnInit{
 
   @Input() productGroupList : ProductGroup[];
 
-  @Input() listStr : string;
-
   @Output() groupClicked = new EventEmitter<ProductGroup>();
 
   ngOnInit(){
-    console.log('listStr: '+this.listStr);
+    
   }
 
 }

@@ -12,7 +12,7 @@ export class ProductService {
   }
 
   public getProduct(productID : number): Product{
-    let groupList : ProductGroup[] = this.productGroupService.GetProductGroupData();
+    let groupList : ProductGroup[] = this.productGroupService.productGroupList;
     
     let productToReturn: Product; 
     groupList.every(function(group){
@@ -37,7 +37,7 @@ export class ProductService {
   }
 
   public getGroupByProductID(productID : number): ProductGroup{
-    let groupList : ProductGroup[] = this.productGroupService.GetProductGroupData();
+    let groupList : ProductGroup[] = this.productGroupService.productGroupList;
     let groupToReturn: ProductGroup; 
     groupList.every(function(group){
       let product : Product = group.productList.find(p => p.id === productID);

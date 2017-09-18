@@ -12,13 +12,12 @@ export class ProductGroupService {
 
   private _productGroupList : ProductGroup[];
   private _http: HttpClient;
-  private _listStr: string;
   private _getRealMock: boolean;
 
   constructor(http: HttpClient) {
     this._productGroupList = [];
     this._http = http;
-    this._getRealMock = true;
+    this._getRealMock = false;
     this.InitProductGroupList();
   }
 
@@ -26,19 +25,15 @@ export class ProductGroupService {
     return this._productGroupList;
   }
 
-  get listStr(): string{
-    return this._listStr;
-  }
-  
   InitProductGroupList(){
-    this._productGroupList = this.GetProductGroupData();
+    this.GetProductGroupData();
   }
 
   GetProductGroupData(){
     if (this._getRealMock){
       console.log('getting mock data');
       let productGroupMock : ProductGroup[] = ProductGroup.GetMockFromWebAPI();
-      return productGroupMock;
+      this._productGroupList = productGroupMock;
     }
     else{
       console.log('getting real data');
@@ -46,13 +41,12 @@ export class ProductGroupService {
       let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
       let params = 'storeid=5&userid=3&cultureid=1'
       url = `${url}?${params}`;
-      this._http.get(url,{headers: headers})
+      this._http.get<ProductGroup[]>(url,{headers: headers})
         .subscribe(
           response => {
             console.log(response, typeof response);
             console.log('JSON.stringify(response): ' + JSON.stringify(response));
-            this._listStr = JSON.stringify(response);
-            return response;
+            this._productGroupList = response;
           },
           err => {
                 console.log('Something went wrong! Error: '+err.message);
