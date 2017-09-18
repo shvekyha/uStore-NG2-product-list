@@ -35,10 +35,29 @@ export class ProductGroup {
       return productGroupList;
     }
 
-    static GetMockFromWebAPI() : Object[]{
-      let returnObj : Object[];
+    static GetMockFromWebAPI() : ProductGroup[]{
+      let returnObj : ProductGroup[];
 
-      returnObj = [{"groupId":5,"groupName":"Group1","depth":0,"childGroups":null}];
+      let productList : Product[] = [
+        {"id":1,"name":"XM Pressocup","description":"","thumbnailURL":"Store_05/Product_0001/Pages/Thumbnails/Page_01.png"},
+        {"id":9,"name":"static1","description":"","thumbnailURL":"Store_05/Product_0009/Pages/Thumbnails/a44bc9ad-02e6-4b29-9643-c27eef36a86b.PNG"},
+        {"id":11,"name":"static2","description":"","thumbnailURL":"Store_05/Product_0011/Pages/Thumbnails/96a8dcdc-b04e-406d-bad1-782a6d0acd36.PNG"},
+        {"id":12,"name":"XM Pressocup all regular pricing","description":"","thumbnailURL":"Store_05/Product_0012/Pages/Thumbnails/Page_01.png"},
+        {"id":30,"name":"XM Pressocup - xm regular pricing child mixed","description":"","thumbnailURL":"Store_05/Product_0030/Pages/Thumbnails/Page_01.png"},
+        {"id":18,"name":"XM Pressocup - xm excel child reg","description":"","thumbnailURL":"Store_05/Product_0018/Pages/Thumbnails/Page_01.png"},
+        {"id":24,"name":"XM Pressocup all excel pricing","description":"","thumbnailURL":"Store_05/Product_0024/Pages/Thumbnails/Page_01.png"},
+        {"id":36,"name":"Dynamic","description":"","thumbnailURL":"Store_05/Product_0036/Pages/Thumbnails/Page_01.jpg"}
+      ];
+
+
+      returnObj = [
+        {
+          "id":5,
+          "name":"Group1",
+          "description":"This is the best product group ever!",
+          "productList": productList
+        }
+      ];
 
       return returnObj;
     }

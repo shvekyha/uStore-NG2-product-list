@@ -1,3 +1,4 @@
+import { ProductGroupService } from './product-group.service';
 import { ProductGroup } from './product-group';
 import { Product } from './product';
 import { Injectable } from '@angular/core';
@@ -5,10 +6,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ProductService {
 
-  constructor() { }
+  public productGroupService: ProductGroupService;
+  constructor(service: ProductGroupService) { 
+    this.productGroupService = service;
+  }
 
   public getProduct(productID : number): Product{
-    let groupList : ProductGroup[] = ProductGroup.GetMock();
+    let groupList : ProductGroup[] = this.productGroupService.GetProductGroupData();
     
     let productToReturn: Product; 
     groupList.every(function(group){
@@ -33,7 +37,7 @@ export class ProductService {
   }
 
   public getGroupByProductID(productID : number): ProductGroup{
-    let groupList : ProductGroup[] = ProductGroup.GetMock();
+    let groupList : ProductGroup[] = this.productGroupService.GetProductGroupData();
     let groupToReturn: ProductGroup; 
     groupList.every(function(group){
       let product : Product = group.productList.find(p => p.id === productID);
