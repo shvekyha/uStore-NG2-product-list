@@ -38,7 +38,7 @@ export class ProductGroupService {
     else{
       console.log('getting real data');
       let headers = new HttpHeaders({'ContentType' : 'application/json'});
-      let url = 'https://hadassh/ustore/api/ProductList/GetProductGroups';
+      let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
       let params = 'storeid=5&userid=3&cultureid=1'
       url = `${url}?${params}`;
       this._http.get<ProductGroup[]>(url,{headers: headers})
