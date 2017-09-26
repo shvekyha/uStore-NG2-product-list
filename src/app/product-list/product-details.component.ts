@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-product-details',
   template: `
     <section class="innerSection">
-      <span *ngIf='currentProduct'>Here are the details for product: {{currentProduct.name}}</span>
+      <h1 *ngIf='currentProduct'>Here are the details for product:</h1><h2>{{currentProduct.name}}</h2>
       <div class="back">
         <button (click)="onClick()">< Back</button>
       </div>
