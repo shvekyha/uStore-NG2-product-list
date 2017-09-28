@@ -38,6 +38,12 @@ export class ProductGroupService {
     else{
       console.log('getting real data');
       let headers = new HttpHeaders({'ContentType' : 'application/json'});
+
+      // let headers = new HttpHeaders({
+      //   'Content-Type' : 'application/x-www-form-urlencoded', //'application/json',
+      //   'Accept': 'application/json',
+      // });
+
       let url = 'http://hadassh/ustore/api/ProductList/GetProductGroups';
       let params = 'storeid=5&userid=3&cultureid=1'
       url = `${url}?${params}`;
