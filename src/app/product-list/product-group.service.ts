@@ -17,7 +17,7 @@ export class ProductGroupService {
   constructor(http: HttpClient) {
     this._productGroupList = [];
     this._http = http;
-    this._getRealMock = false;
+    this._getRealMock = true;
     this.InitProductGroupList();
   }
 
@@ -32,7 +32,8 @@ export class ProductGroupService {
   GetProductGroupData(){
     if (this._getRealMock){
       console.log('getting mock data');
-      let productGroupMock : ProductGroup[] = ProductGroup.GetMockFromWebAPI();
+      //let productGroupMock : ProductGroup[] = ProductGroup.GetMockFromWebAPI();
+      let productGroupMock : ProductGroup[] = ProductGroup.GetMock();
       this._productGroupList = productGroupMock;
     }
     else{

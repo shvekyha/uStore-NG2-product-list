@@ -6,6 +6,8 @@ import { AppRouter } from './app.routes';
 
 import { AppComponent } from './app.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +24,7 @@ export class AppModule {
     title.setTitle('uStore product list');
     
     //subscribe to events of the router
-    router.events.subscribe(events => console.log(events));
+    router.events.subscribe();//events => console.log(events));
+    
   }
 }

@@ -31,7 +31,7 @@ export class ProductInListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit ProductInListComponent product: '+this.product.name);
+    //console.log('ngOnInit ProductInListComponent product: '+this.product.name);
   }
 
 }
